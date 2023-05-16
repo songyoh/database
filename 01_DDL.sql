@@ -7,14 +7,14 @@ DEFAULT CHARACTER SET UTF8;을 붙여주시면 한글설정이 됩니다.
 CREATE DATABASE bitcamp06 DEFAULT CHARACTER SET UTF8;
 
 /*데이터베이스 조회는 좌측 하단 중간쯤의 Schemas를 클릭-> 새로고침
-한 다음, bitcamp06이 생성된게 확인되었으면 우클릭-> set as default schemas
+한 다음, bitcamp06이 생성된게 확인되었으면 우클릭-> set as default schemas(=더블클릭도 가능)
 선택시 볼드처리 되고, 지금부터 적는 쿼리문은 해당 DB에 들어간다는 의미임.*/
 /*해당 DB에 접근할 수 있는 사용자 계정 생성
 USER - id역할, IDENTIFIED BY-PW역할*/
 CREATE USER 'adminid' IDENTIFIED BY '2023502';
 
 /*사용자에게 권한 부여 : GRANT 주고싶은기능1, 기능2...
-만약 모든 권한을 주고 싶다면 ALL PRIVILEGES(모든권한) TO 부여받을계정명 */
+만약 모든 권한을 주고 싶다면 ALL PRIVILEGES(모든권한) ON DB명.* TO 부여받을계정명 */
 GRANT ALL PRIVILEGES ON bitcamp06.* to 'adminid';
 
 /*테이블 생성 명령
@@ -50,9 +50,8 @@ SELECT * FROM users;
 조회구문은 이메일 , 회원번호, 아이디 순으로 세 컬럼만 조회하는 구문*/
 INSERT INTO users VALUES (3, 'abc7890', '', 'efg@cd.com');
 SELECT email, u_number, u_id FROM users;
-/*INSERT INTO users(u_id,u_number,u_name) VALUES
-	('qwer1234', 3,'쿼리개발');
-SELECT email, u_number, u_id FROM users;*/
+/*INSERT INTO users(u_id,u_number,u_name) VALUE('VALUE'든 'VALUES'든 상관없다)
+	('qwer1234', 3,'쿼리개발');*/
 
 /* 계정을 하나 더 생성하겠습니다.
 이번 계정은 SELECT 권한 주겠습니다.*/
